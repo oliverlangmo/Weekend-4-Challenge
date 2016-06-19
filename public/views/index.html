@@ -5,13 +5,16 @@
     <title>the big to-do list</title>
     <script src="../vendors/jquery.min.js" charset="utf-8"></script>
     <script src="../scripts/FE-app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-   <input type="text" id="taskIn" placeholder="enter task here"name="name" value="">
-   <button type="button" id="getTasks" name="button">Get Tasks</button>
-   <button type="button" id="sendTask" name="button">Add Task</button>
-
-   <taskDiv></div>
-   <completedDiv></div>
+    <div id = 'inputDiv'>
+      <h2>Enter tasks here!</h2>
+       <input type="text" id="taskIn" placeholder="enter task here"name="name" value="">
+       <button type="button" id="getTasks" name="button">Get Tasks</button>
+       <button type="submit" id="sendTask" name="button">Add Task</button>
+    </div>
+   <div id ='taskDiv'></div>
+   <div id = 'completedDiv'></div>
   </body>
 </html>

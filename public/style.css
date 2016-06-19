@@ -1,0 +1,16 @@
+#inputDiv{
+  height: 100px;
+  width: 400px;
+  margin: auto;
+  border: 1px solid black;
+}
+#taskDiv{
+  width: 400px;
+  top:0;
+  margin: 0 auto;
+
+}
+#taskPane{
+  border: 1px dashed black;
+  background-color: #85D4F9;
+}
