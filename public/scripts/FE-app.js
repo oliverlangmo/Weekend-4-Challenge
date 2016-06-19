@@ -18,7 +18,7 @@ $('#sendTask').on('click', function(){
   });
   $( '#getTasks' ).on( 'click', getTasks);
   $( '#taskDiv' ).on( 'click','.deleteMe', deleteTask );
-  $('#taskDiv').on('click', '.completeMe', completeTask);
+  $('#taskDiv').on('click', '#completeMe', completeTask);
 
   function deleteTask(){
    var deleteID = $( this ).data( 'id' );
@@ -51,23 +51,28 @@ function completeTask() {
  $.ajax({
       type: 'POST',
       url: '/completeTask',
-      data: complTask
+      data: complTask,
+
   });
-  getTasks();
-}
-$('.completeMe').on('click', function(){
-  $(this).parent().css({'background-color': 'green'});
-});
+ getTasks();
+ }
+
 
 function showTasks( tasks ){
   console.log( "in showTasks: ", tasks );
   // empty output div and input field
   $( '#taskIn' ).val( "" );
   $( '#taskDiv' ).empty();
+  $('#completedDiv').empty();
   // append each row to task div
   for( var i=0; i<tasks.length; i++ ){
   console.log(tasks);
-      $( '#taskDiv' ).append( '<p id = taskPane><b>Task: ' + tasks[i].entry + '<br/>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'</b><button class="completeMe" data-id="' + tasks[i].id + '">Complete</button><button class="deleteMe" data-id="' + tasks[i].id + '">Delete</button>'+'</p>' );
-  }
+  if(tasks[i].completed===false){
+   $( '#taskDiv' ).append( '<p id = "taskPane"><b>Task: ' + tasks[i].entry + '<br/></b>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'<button id="completeMe" data-id="' + tasks[i].id + '">Complete</button><button class="deleteMe" data-id="' + tasks[i].id + '">Delete</button>'+'</p>' );
+ } else{
+   $('#completedDiv').show();
+   $('#completedDiv').append( '<p id ="taskPane"><b>Task: ' + tasks[i].entry + '<br/></b>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'</p>' );
+ }
+}
 }
 });

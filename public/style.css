@@ -1,16 +1,31 @@
+body{
+  background-image: url('/img/maze.png');
+}
+
 #inputDiv{
   height: 100px;
   width: 400px;
   margin: auto;
+  background-color: white;
   border: 1px solid black;
 }
 #taskDiv{
   width: 400px;
-  top:0;
   margin: 0 auto;
 
 }
 #taskPane{
   border: 1px dashed black;
-  background-color: #85D4F9;
+  background-color: white;
+}
+
+#completedDiv{
+  display: none;
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid green;
+}
+#completedDiv > #taskPane{
+  text-decoration: line-through;
+  background-color:green;
 }
