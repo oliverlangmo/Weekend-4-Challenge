@@ -1,0 +1,10 @@
+createdb TASKMASTER
+database name = TASKMASTER
+table name = harry_tasker
+CREATE TABLE harry_tasker (
+     id SERIAL PRIMARY KEY,
+     entry TEXT,
+     completed BOOLEAN
+     created TIMESTAMP,
+);
+column names= |id|entry|completed|created|

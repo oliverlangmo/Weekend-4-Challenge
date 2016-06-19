@@ -1,8 +1,6 @@
 console.log('script sourced');
 
 $(document).ready(function(){
-
-  console.log('jquery works');
 $('#sendTask').on('click', function(){
    var newTaskName = $('#taskIn').val();
     var newTask={
@@ -21,19 +19,23 @@ $('#sendTask').on('click', function(){
   $('#taskDiv').on('click', '#completeMe', completeTask);
 
   function deleteTask(){
-   var deleteID = $( this ).data( 'id' );
-   console.log(deleteID);
-   var delTask = {
-     "id": deleteID
-   };
-  $.ajax({
-       type: 'POST',
-       url: '/postDelete',
-       data: delTask
-   });
-   getTasks();
-   }
-
+    var result = confirm('Are you sure you want to delete?');
+    if (result){
+         var deleteID = $( this ).data( 'id' );
+         console.log(deleteID);
+         var delTask = {
+           "id": deleteID
+         };
+        $.ajax({
+             type: 'POST',
+             url: '/postDelete',
+             data: delTask
+         });
+         getTasks();
+         }else{
+  return false;
+}
+}
 function getTasks(){
 $.ajax({
 type : 'GET',
