@@ -38,7 +38,7 @@ pg.connect(connectionString, function(err, client, done){
   });
   query.on('end', function() {
             done();
-            // rend back results as a json
+            // Send back results as a json
             return res.json(results);
         }); // end onEnd
         if(err) {

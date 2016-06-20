@@ -45,9 +45,9 @@ if($('#taskIn').val()===''){
          });
          getTasks();
          }else{
-  return false;
-}
-}
+            return false;
+          }
+     }
 //gets tasks from DB function
 function getTasks(){
   $('#errorDiv').empty();
@@ -57,8 +57,8 @@ type : 'GET',
 url: '/getTasks',
 success: function(data) {
   showTasks(data);
-}
-});
+     }
+  });
 }
 //function that updates boolean value of completed? and updates DOM and db
 function completeTask() {
@@ -70,10 +70,9 @@ function completeTask() {
       type: 'POST',
       url: '/completeTask',
       data: complTask,
-
-  });
- getTasks();
- }
+        });
+     getTasks();
+  }
 
 //appends tasks to DOM; completed tasks go to completedDiv, incomplete tasks to taskDiv
 function showTasks( tasks ){
@@ -85,10 +84,10 @@ function showTasks( tasks ){
   for( var i=0; i<tasks.length; i++ ){
   if(tasks[i].completed===false){
    $( '#taskDiv' ).append( '<p id = "taskPane"><b>Task: ' + tasks[i].entry + '<br/></b>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'<button id="completeMe" data-id="' + tasks[i].id + '">Complete</button><button class="deleteMe" data-id="' + tasks[i].id + '">Delete</button>'+'</p>' );
- } else{
+    } else{
    $('#completedDiv').show();
    $('#completedDiv').append( '<p id ="taskPane"><b>Task: ' + tasks[i].entry + '<br/></b>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'</p>' );
- }
-}
-}
+      }
+    }
+  }
 });
