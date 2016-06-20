@@ -6,18 +6,21 @@ var urlencodedParser=bodyParser.urlencoded( { extended: false } );
 var pg = require('pg');
 var connectionString  = 'postgres://localhost:5432/TASKMASTER';
 
-
+//spin up server
 app.listen(8080, 'localhost', function(req, res){
   console.log('server is listening');
 });
 
 // static folder
 app.use( express.static( "public" ) );
+
+//base url
 app.get( '/', function( req, res ){
   console.log( 'at base url' );
   res.sendFile( path.resolve( 'public/views/index.html' ) );
 }); // end base url
 
+//adds to input to db
 app.post('/addNew', urlencodedParser, function(req, res){
   console.log( 'in POST addNew: ' + req.body.task + " " + req.body.complete );
     pg.connect( connectionString, function( err, client, done ){
@@ -25,7 +28,9 @@ app.post('/addNew', urlencodedParser, function(req, res){
         done();
 });
 res.end();
-});
+});// end add
+
+//sends db entries to client
 app.get('/getTasks', urlencodedParser, function(req,res){
   var results = [];
 pg.connect(connectionString, function(err, client, done){
@@ -41,24 +46,27 @@ pg.connect(connectionString, function(err, client, done){
         if(err) {
             console.log(err);
         } // end error
+      });
 });
 
-});
+//deletes entry from db
 app.post( '/postDelete', urlencodedParser, function(req, res){
   console.log('in postDelete: ' + req.body.id);
   var thisID = req.body.id;
   pg.connect( connectionString, function( err, client, done ) {
     client.query( "DELETE FROM harry_tasker WHERE id="+ thisID);
     done();
-  });//end app.post
+  });
   res.end();
-});
+});//end delete
+
+//changes boolean value of completed
 app.post( '/completeTask', urlencodedParser, function(req, res){
   console.log('in completeTask: ' + req.body.id);
   var thisID = req.body.id;
   pg.connect( connectionString, function( err, client, done ) {
     client.query( "UPDATE harry_tasker SET completed = 'true' WHERE id="+ thisID);
     done();
-  });//end app.post
+  });
   res.end();
 });

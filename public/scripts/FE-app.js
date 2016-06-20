@@ -1,6 +1,7 @@
-console.log('script sourced');
-
+//document ready
 $(document).ready(function(){
+  //checks for empty box and if entry, submits to server/db
+  //and updates DOM with info in db
 $('#sendTask').on('click', function(){
 if($('#taskIn').val()===''){
   $('#errorDiv').show();
@@ -22,11 +23,14 @@ if($('#taskIn').val()===''){
    getTasks();
  }
   });
-
+  //gets existing tasks from db
   $( '#getTasks' ).on( 'click', getTasks);
+  //deletes tasks from DOM and db
   $( '#taskDiv' ).on( 'click','.deleteMe', deleteTask );
+  //changes boolean value of completed?
   $('#taskDiv').on('click', '#completeMe', completeTask);
 
+  //deletes from DOM and db after confirmation
   function deleteTask(){
     var result = confirm('Are you sure you want to delete?');
     if (result){
@@ -45,6 +49,7 @@ if($('#taskIn').val()===''){
   return false;
 }
 }
+//gets tasks from DB function
 function getTasks(){
   $('#errorDiv').empty();
   $('#errorDiv').hide();
@@ -56,6 +61,7 @@ success: function(data) {
 }
 });
 }
+//function that updates boolean value of completed? and updates DOM and db
 function completeTask() {
   var completeID = $(this).data('id');
   var complTask = {
@@ -70,7 +76,7 @@ function completeTask() {
  getTasks();
  }
 
-
+//appends tasks to DOM; completed tasks go to completedDiv, incomplete tasks to taskDiv
 function showTasks( tasks ){
   console.log( "in showTasks: ", tasks );
   // empty output div and input field
