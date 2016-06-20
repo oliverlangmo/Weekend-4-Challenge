@@ -14,6 +14,7 @@ body{
   display: none;
   width: 400px;
   margin: auto;
+  color: red;
 }
 #taskDiv{
   width: 400px;
