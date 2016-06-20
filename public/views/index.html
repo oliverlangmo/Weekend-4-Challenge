@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="../style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div id = 'inputDiv'>
-      <h2>Enter tasks here!</h2>
-       <input type="text" id="taskIn" placeholder="enter task here"name="name" value="">
-       <button type="button" id="getTasks" name="button">Get Tasks</button>
-       <button type="submit" id="sendTask" name="button">Add Task</button>
+    <div id="wrap">
+        <div id = 'inputDiv'>
+          <h2>--Enter tasks here!--</h2>
+           <input type="text" id="taskIn" placeholder="enter task here"name="name" value="">
+           <button type="submit" id="sendTask" name="button">Add Task</button>
+           <button type="button" id="getTasks" name="button">Get Tasks</button>
+        </div>
+        <div id = 'errorDiv'></div>
+        <div id ='taskDiv'></div>
+        <div id = 'completedDiv'></div>
     </div>
-    <div id = 'errorDiv'></div>
-   <div id ='taskDiv'></div>
-   <div id = 'completedDiv'></div>
   </body>
 </html>
