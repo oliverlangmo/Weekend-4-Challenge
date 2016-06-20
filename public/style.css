@@ -23,9 +23,11 @@ body{
   width: 400px;
   margin: 0 auto;
   border: 1px solid black;
+  background-color: white;
 
 }
 #taskPane{
+  font-family: 'Permanent Marker', cursive;
   border: 1px dashed black;
   background-color: #9FF8D4;
 }
@@ -39,6 +41,7 @@ body{
   opacity: .5;
 }
 #completedDiv > #taskPane{
+  font-family: 'Permanent Marker', cursive;
   text-decoration: line-through;
   background-color:gray;
 }
