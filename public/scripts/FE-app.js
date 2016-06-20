@@ -35,7 +35,6 @@ if($('#taskIn').val()===''){
     var result = confirm('Are you sure you want to delete?');
     if (result){
          var deleteID = $( this ).data( 'id' );
-         console.log(deleteID);
          var delTask = {
            "id": deleteID
          };
@@ -78,14 +77,12 @@ function completeTask() {
 
 //appends tasks to DOM; completed tasks go to completedDiv, incomplete tasks to taskDiv
 function showTasks( tasks ){
-  console.log( "in showTasks: ", tasks );
   // empty output div and input field
   $( '#taskIn' ).val( "" );
   $( '#taskDiv' ).empty();
   $('#completedDiv').empty();
   // append each row to task div
   for( var i=0; i<tasks.length; i++ ){
-  console.log(tasks);
   if(tasks[i].completed===false){
    $( '#taskDiv' ).append( '<p id = "taskPane"><b>Task: ' + tasks[i].entry + '<br/></b>Complete?: ' + tasks[i].completed + ", created: " + tasks[ i ].created +'<button id="completeMe" data-id="' + tasks[i].id + '">Complete</button><button class="deleteMe" data-id="' + tasks[i].id + '">Delete</button>'+'</p>' );
  } else{

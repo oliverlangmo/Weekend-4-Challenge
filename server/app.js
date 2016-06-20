@@ -16,13 +16,11 @@ app.use( express.static( "public" ) );
 
 //base url
 app.get( '/', function( req, res ){
-  console.log( 'at base url' );
   res.sendFile( path.resolve( 'public/views/index.html' ) );
 }); // end base url
 
 //adds to input to db
 app.post('/addNew', urlencodedParser, function(req, res){
-  console.log( 'in POST addNew: ' + req.body.task + " " + req.body.complete );
     pg.connect( connectionString, function( err, client, done ){
       client.query( 'INSERT INTO harry_tasker ( entry, completed,created  ) VALUES ( $1, $2, $3)', [ req.body.task, req.body.complete, 'NOW()' ] );
         done();
@@ -51,7 +49,6 @@ pg.connect(connectionString, function(err, client, done){
 
 //deletes entry from db
 app.post( '/postDelete', urlencodedParser, function(req, res){
-  console.log('in postDelete: ' + req.body.id);
   var thisID = req.body.id;
   pg.connect( connectionString, function( err, client, done ) {
     client.query( "DELETE FROM harry_tasker WHERE id="+ thisID);
@@ -62,7 +59,6 @@ app.post( '/postDelete', urlencodedParser, function(req, res){
 
 //changes boolean value of completed
 app.post( '/completeTask', urlencodedParser, function(req, res){
-  console.log('in completeTask: ' + req.body.id);
   var thisID = req.body.id;
   pg.connect( connectionString, function( err, client, done ) {
     client.query( "UPDATE harry_tasker SET completed = 'true' WHERE id="+ thisID);
