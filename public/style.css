@@ -10,6 +10,11 @@ body{
   border: 1px solid black;
   text-align: center;
 }
+#errorDiv{
+  display: none;
+  width: 400px;
+  margin: auto;
+}
 #taskDiv{
   width: 400px;
   margin: 0 auto;
@@ -24,7 +29,6 @@ body{
 
 #completedDiv{
   display: none;
-
   width: 400px;
   margin: 0 auto;
   border: 2px solid gray;

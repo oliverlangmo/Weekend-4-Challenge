@@ -2,6 +2,13 @@ console.log('script sourced');
 
 $(document).ready(function(){
 $('#sendTask').on('click', function(){
+if($('#taskIn').val()===''){
+  $('#errorDiv').show();
+  $('#errorDiv').append('Please enter a task');
+  return;
+}else{
+  $('#errorDiv').empty();
+   $('#errorDiv').hide();
    var newTaskName = $('#taskIn').val();
     var newTask={
       'task': newTaskName,
@@ -13,7 +20,9 @@ $('#sendTask').on('click', function(){
     data: newTask
    });
    getTasks();
+ }
   });
+
   $( '#getTasks' ).on( 'click', getTasks);
   $( '#taskDiv' ).on( 'click','.deleteMe', deleteTask );
   $('#taskDiv').on('click', '#completeMe', completeTask);
@@ -37,6 +46,8 @@ $('#sendTask').on('click', function(){
 }
 }
 function getTasks(){
+  $('#errorDiv').empty();
+  $('#errorDiv').hide();
 $.ajax({
 type : 'GET',
 url: '/getTasks',
