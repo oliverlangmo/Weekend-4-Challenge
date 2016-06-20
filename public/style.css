@@ -13,12 +13,13 @@ body{
 #taskDiv{
   width: 400px;
   margin: 0 auto;
+  background-color: white;
   border: 1px solid black;
 
 }
 #taskPane{
   border: 1px dashed black;
-  background-color: white;
+  background-color: #9FF8D4;
 }
 
 #completedDiv{
