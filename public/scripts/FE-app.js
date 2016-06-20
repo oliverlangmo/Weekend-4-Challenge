@@ -23,11 +23,11 @@ if($('#taskIn').val()===''){
    getTasks();
  }
   });
-  //gets existing tasks from db
+  //gets existing tasks from db on click
   $( '#getTasks' ).on( 'click', getTasks);
-  //deletes tasks from DOM and db
+  //deletes tasks from DOM and db on click
   $( '#taskDiv' ).on( 'click','.deleteMe', deleteTask );
-  //changes boolean value of completed?
+  //changes boolean value of completed? on click
   $('#taskDiv').on('click', '#completeMe', completeTask);
 
   //deletes from DOM and db after confirmation
