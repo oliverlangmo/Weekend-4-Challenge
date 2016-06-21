@@ -7,7 +7,7 @@ body{
 }
 #inputDiv{
   height: 100px;
-  width: 400px;
+  width: 500px;
   margin: auto;
   background-color: #ECF1EF;
   border: 1px solid black;
@@ -15,12 +15,12 @@ body{
 }
 #errorDiv{
   display: none;
-  width: 400px;
+  width: 500px;
   margin: auto;
   color: red;
 }
 #taskDiv{
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
   border: 1px solid black;
   background-color: white;
@@ -34,7 +34,7 @@ body{
 
 #completedDiv{
   display: none;
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
   border: 2px solid gray;
   background-color: black;
